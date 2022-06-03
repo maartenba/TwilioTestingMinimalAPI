@@ -2,15 +2,42 @@
 using System.Net.Http.Json;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace MinimalAPI.Tests;
+
+public class TestPeopleService : IPeopleService
+{
+    public string Create(Person person) => "It works!";
+}
+
+class TestingApplication : WebApplicationFactory<Person>
+{
+    protected override IHost CreateHost(IHostBuilder builder)
+    {
+        builder.ConfigureServices(services => 
+        {
+            services.AddScoped<IPeopleService, TestPeopleService>();
+        });
+ 
+        return base.CreateHost(builder);
+    }
+}
 
 public class PeopleTests
 {
     [Fact]
     public async Task CreatePerson()
     {
-        await using var application = new WebApplicationFactory<Program>();
+        await using var application = new WebApplicationFactory<Program>()
+            .WithWebHostBuilder(builder => builder
+                .ConfigureServices(services =>
+                {
+                    services.AddScoped<IPeopleService, TestPeopleService>();
+                }));
+        
+        // or: await using var application = new TestingApplication();
 
         var client = application.CreateClient();
         
@@ -22,13 +49,20 @@ public class PeopleTests
         });
         
         Assert.True(result.StatusCode == HttpStatusCode.OK);
-        Assert.Equal("\"Hello, Maarten Balliauw\"", await result.Content.ReadAsStringAsync());
+        Assert.Equal("\"It works!\"", await result.Content.ReadAsStringAsync());
     }
     
     [Fact]
     public async Task CreatePersonValidatesObject()
     {
-        await using var application = new WebApplicationFactory<Program>();
+        await using var application = new WebApplicationFactory<Program>()
+            .WithWebHostBuilder(builder => builder
+                .ConfigureServices(services =>
+                {
+                    services.AddScoped<IPeopleService, TestPeopleService>();
+                }));
+        
+        // or: await using var application = new TestingApplication();
 
         var client = application.CreateClient();
         
