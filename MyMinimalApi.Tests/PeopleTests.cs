@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace MinimalAPI.Tests;
+namespace MyMinimalApi.Tests;
 
 public class TestPeopleService : IPeopleService
 {
@@ -48,7 +48,7 @@ public class PeopleTests
             Email = "maarten@jetbrains.com"
         });
         
-        Assert.True(result.StatusCode == HttpStatusCode.OK);
+        Assert.Equal(HttpStatusCode.OK, result.StatusCode);
         Assert.Equal("\"It works!\"", await result.Content.ReadAsStringAsync());
     }
     
@@ -68,7 +68,7 @@ public class PeopleTests
         
         var result = await client.PostAsJsonAsync("/people", new Person());
         
-        Assert.True(result.StatusCode == HttpStatusCode.BadRequest);
+        Assert.Equal(HttpStatusCode.BadRequest, result.StatusCode);
         
         var validationResult = await result.Content.ReadFromJsonAsync<HttpValidationProblemDetails>();
         Assert.NotNull(validationResult);

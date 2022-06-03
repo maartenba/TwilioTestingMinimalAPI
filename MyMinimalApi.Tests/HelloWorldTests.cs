@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc.Testing;
 
-namespace MinimalAPI.Tests;
+namespace MyMinimalApi.Tests;
 
 public class HelloWorldTests
 {

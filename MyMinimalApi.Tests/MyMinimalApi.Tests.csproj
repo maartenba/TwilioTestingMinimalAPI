@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MinimalAPI\MinimalAPI.csproj" />
+    <ProjectReference Include="..\MyMinimalApi\MyMinimalApi.csproj" />
   </ItemGroup>
 
 </Project>

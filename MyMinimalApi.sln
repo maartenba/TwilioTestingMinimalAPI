@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalAPI", "MinimalAPI\MinimalAPI.csproj", "{1AAF620C-27AC-4365-89AF-DF82CD621AAE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMinimalApi", "MyMinimalApi\MyMinimalApi.csproj", "{1AAF620C-27AC-4365-89AF-DF82CD621AAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalAPI.Tests", "MinimalAPI.Tests\MinimalAPI.Tests.csproj", "{AA334B2E-68DF-40CD-A83A-6F22F83F2BF1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMinimalApi.Tests", "MyMinimalApi.Tests\MyMinimalApi.Tests.csproj", "{AA334B2E-68DF-40CD-A83A-6F22F83F2BF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

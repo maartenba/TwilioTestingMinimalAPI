@@ -26,7 +26,7 @@ public interface IPeopleService
 public class PeopleService : IPeopleService
 {
     public string Create(Person person) 
-        => $"Hello, {person.FirstName} {person.LastName}";
+        => $"s{person.FirstName} {person.LastName} created.";
 }
 
 public class Person
