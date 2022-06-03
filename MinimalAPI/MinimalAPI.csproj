@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MiniValidation" Version="0.6.0-pre.20220527.55" />
+  </ItemGroup>
+
 </Project>
